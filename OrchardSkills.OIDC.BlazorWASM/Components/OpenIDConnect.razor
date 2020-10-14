@@ -1,4 +1,5 @@
-﻿@inject IJSRuntime JSRuntime
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject IJSRuntime JSRuntime
 
 <h3>OIDC</h3>
 <p>Authorized: @authorized</p>
@@ -16,6 +17,19 @@ else
 
     [Parameter]
     public bool InitialValue { get; set; }
+
+    protected override void OnInitialized()
+    {
+        var options = new RemoteAuthenticationOptions<OidcProviderOptions>();
+        options.ProviderOptions.Authority = "http://localhost:44385/";
+        options.ProviderOptions.ClientId = "code_flow_client_id";
+        options.ProviderOptions.DefaultScopes.Add("openid");
+        options.ProviderOptions.DefaultScopes.Add("profile");
+        options.ProviderOptions.DefaultScopes.Add("api");
+        options.ProviderOptions.RedirectUri = "http://localhost:44385/signin-callback";
+        options.ProviderOptions.PostLogoutRedirectUri = "http://localhost:44385/signout-callback";
+        options.ProviderOptions.ResponseMode = "code";
+    }
 
     private async Task Login() 
     {
