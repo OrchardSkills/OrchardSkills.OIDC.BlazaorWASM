@@ -1,4 +1,6 @@
-﻿<h3>Counter</h3>
+﻿@inject IJSRuntime JSRuntime
+
+<h3>Counter</h3>
 <p>Current count: @currentCount</p>
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
@@ -8,7 +10,11 @@
     [Parameter]
     public int InitialValue { get; set; }
 
-    private void IncrementCount() => currentCount++;
+    private async Task IncrementCount() 
+    {
+        currentCount++;
+        await JSRuntime.InvokeVoidAsync("alert", "Hello world");
+    }
 
     protected override void OnParametersSet()
     {
