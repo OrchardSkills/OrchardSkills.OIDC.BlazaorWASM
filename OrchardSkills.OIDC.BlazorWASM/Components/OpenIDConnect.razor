@@ -1,0 +1,35 @@
+﻿@inject IJSRuntime JSRuntime
+
+<h3>OIDC</h3>
+<p>Authorized: @authorized</p>
+
+@if (authorized)
+{
+  <button class="btn btn-primary" @onclick="Logout">Logout</button>
+}
+else
+{
+  <button class="btn btn-primary" @onclick="Login">Login</button>
+}
+@code {
+    private bool authorized = false;
+
+    [Parameter]
+    public bool InitialValue { get; set; }
+
+    private async Task Login() 
+    {
+        await JSRuntime.InvokeVoidAsync("alert", "Logged in");
+        authorized = true;
+    }
+
+    private async Task Logout() 
+    {
+        await JSRuntime.InvokeVoidAsync("alert", "Loggedout");
+        authorized = false;
+    }
+    protected override void OnParametersSet()
+    {
+        authorized = InitialValue;
+    }
+}
