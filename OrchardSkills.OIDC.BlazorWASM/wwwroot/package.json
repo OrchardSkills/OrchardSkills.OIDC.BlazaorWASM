@@ -1,0 +1,33 @@
+{
+  "name": "orchardskills.oidc.blazorwasm",
+  "version": "1.0.0",
+  "description": "A Blazor Web Assembly Application consuming the oidc-client-js library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrchardSkills/OrchardSkills.OIDC.BlazaorWASM.git"
+  },
+  "keywords": [
+    "OAuth",
+    "OpenID",
+    "Connect",
+    "OIDC",
+    "Authorization",
+    "Code",
+    "Flow",
+    "BlazorWASM",
+    "oidc-client-js"
+  ],
+  "author": "Orchard Skills",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OrchardSkills/OrchardSkills.OIDC.BlazaorWASM/issues"
+  },
+  "homepage": "https://github.com/OrchardSkills/OrchardSkills.OIDC.BlazaorWASM#readme",
+  "dependencies": {
+    "oidc-client": "^1.10.1"
+  }
+}
